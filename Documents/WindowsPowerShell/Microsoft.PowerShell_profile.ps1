@@ -8,6 +8,8 @@ del alias:si -force
 
 # PSReadline
 set-psreadlineoption -editmode vi
+set-psreadlinekeyhandler -key uparrow -function historysearchbackward
+set-psreadlinekeyhandler -key downarrow -function historysearchforward
 
 new-alias vi nvim
 
