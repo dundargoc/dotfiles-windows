@@ -15,6 +15,8 @@ remove-alias si
 set-psreadlineoption -editmode vi
 set-psreadlinekeyhandler -key uparrow -function historysearchbackward
 set-psreadlinekeyhandler -key downarrow -function historysearchforward
+set-psreadlinekeyhandler -key tab -function menucomplete
+set-psreadlinekeyhandler -key ctrl+spacebar -function forwardchar
 
 #
 #
