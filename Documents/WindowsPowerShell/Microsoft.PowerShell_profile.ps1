@@ -1,10 +1,15 @@
 # Remove conflicting builtin aliases
-del alias:gc -force
-del alias:gcb -force
-del alias:gl -force
-del alias:gp -force
-del alias:gps -force
-del alias:si -force
+function remove-alias {
+    while(test-path alias:$args) {
+        del alias:$args -force
+    }
+}
+remove-alias gc
+remove-alias gcb
+remove-alias gl
+remove-alias gp
+remove-alias gps
+remove-alias si
 
 # PSReadline
 set-psreadlineoption -editmode vi
