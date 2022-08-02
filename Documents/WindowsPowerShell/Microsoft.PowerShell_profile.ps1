@@ -6,6 +6,9 @@ del alias:gp -force
 del alias:gps -force
 del alias:si -force
 
+# PSReadline
+set-psreadlineoption -editmode vi
+
 new-alias vi nvim
 
 function ali {
