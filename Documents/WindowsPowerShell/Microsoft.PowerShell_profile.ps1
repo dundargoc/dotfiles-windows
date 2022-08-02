@@ -22,7 +22,9 @@ set-psreadlinekeyhandler -key downarrow -function historysearchforward
 #
 #
 
-new-alias vi nvim
+function vi {
+    nvim $args
+}
 
 function ali {
     nvim $profile
