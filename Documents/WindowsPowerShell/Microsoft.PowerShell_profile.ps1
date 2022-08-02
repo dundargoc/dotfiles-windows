@@ -276,6 +276,13 @@ function .. {
 }
 
 #
+# Config
+#
+function vimrc{
+    nvim $HOME/AppData/Local/nvim/init.vim
+}
+
+#
 # Build
 #
 function build-deps {
