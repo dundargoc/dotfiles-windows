@@ -34,11 +34,15 @@ function ali {
 
 # git
 function ga {
-    git add -A
+    if($args) {
+        git add $args
+    } else{
+        git add -A
+    }
 }
 
 function gac {
-    git add -A
+    ga $args
     git commit
 }
 
@@ -206,11 +210,11 @@ function gs {
 }
 
 function gsh {
-    git show
+    git show $args
 }
 
 function gshw {
-    git show --word-diff
+    git show --word-diff $args
 }
 
 
