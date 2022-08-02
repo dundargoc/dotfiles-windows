@@ -11,6 +11,12 @@ set-psreadlineoption -editmode vi
 set-psreadlinekeyhandler -key uparrow -function historysearchbackward
 set-psreadlinekeyhandler -key downarrow -function historysearchforward
 
+#
+#
+# Aliases and Functions
+#
+#
+
 new-alias vi nvim
 
 function ali {
