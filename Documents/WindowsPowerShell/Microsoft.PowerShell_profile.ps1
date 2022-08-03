@@ -28,6 +28,10 @@ function vi {
     nvim $args
 }
 
+function ag {
+    rg --ignore-case --hidden --glob '!.git' $args
+}
+
 # git
 function ga {
     if($args) {
