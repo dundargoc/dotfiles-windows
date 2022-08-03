@@ -17,6 +17,7 @@ set-psreadlinekeyhandler -key uparrow -function historysearchbackward
 set-psreadlinekeyhandler -key downarrow -function historysearchforward
 set-psreadlinekeyhandler -key tab -function menucomplete
 set-psreadlinekeyhandler -key ctrl+spacebar -function forwardchar
+set-psreadlinekeyhandler -key ctrl+w -function backwarddeleteword
 
 #
 #
