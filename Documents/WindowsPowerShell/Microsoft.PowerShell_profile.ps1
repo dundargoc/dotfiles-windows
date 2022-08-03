@@ -340,8 +340,12 @@ function build {
 }
 
 function build-clean {
-    rm -recurse -force $NVIM/build
-    rm -recurse -force $NVIM/.deps
+    if (Test-Path $NVIM/build) {
+        rm -recurse -force $NVIM/build
+    }
+    if (Test-Path $NVIM/.deps) {
+        rm -recurse -force $NVIM/.deps
+    }
 }
 
 function build-install {
