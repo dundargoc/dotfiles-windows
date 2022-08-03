@@ -347,9 +347,10 @@ function build-deps {
 
 function build {
     if (-Not (Test-Path $NVIM/build)) {
-        cmake -S $NVIM -B $NVIM/build -G Ninja -D CMAKE_BUILD_TYPE=RelWithDebInfo
+        cmake -S $NVIM -B $NVIM/build -G Ninja -D CMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     }
     cmake --build $NVIM/build
+    cp $NVIM/build/compile_commands.json $NVIM
 }
 
 function build-clean {
