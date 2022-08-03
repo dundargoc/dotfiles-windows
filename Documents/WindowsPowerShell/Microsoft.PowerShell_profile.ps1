@@ -342,14 +342,14 @@ function build-deps {
     } else {
         cmake -S $NVIM/third-party -B $NVIM/.deps
     }
-    cmake --build $NVIM/.deps --config Release
+    cmake --build $NVIM/.deps
 }
 
 function build {
     if (-Not (Test-Path $NVIM/build)) {
-        cmake -S $NVIM -B $NVIM/build
+        cmake -S $NVIM -B $NVIM/build -G Ninja -D CMAKE_BUILD_TYPE=RelWithDebInfo
     }
-    cmake --build $NVIM/build --config Release
+    cmake --build $NVIM/build
 }
 
 function build-clean {
