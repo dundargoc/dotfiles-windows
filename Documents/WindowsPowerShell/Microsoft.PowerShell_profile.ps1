@@ -19,6 +19,11 @@ set-psreadlinekeyhandler -key tab -function menucomplete
 set-psreadlinekeyhandler -key ctrl+spacebar -function forwardchar
 set-psreadlinekeyhandler -key ctrl+w -function backwarddeleteword
 
+# Useful variables
+
+$PROG="$HOME/programs"
+$NVIM="$PROG/neovim"
+
 #
 #
 # Aliases and Functions
@@ -285,15 +290,15 @@ function s {
 #
 
 function cdp {
-    cd $HOME
+    cd $PROG
 }
 
 function cdn {
-    cd $HOME/neovim
+    cd $NVIM
 }
 
 function cdnn {
-    cd $HOME/neovim/src/nvim
+    cd $NVIM/src/nvim
 }
 
 function .. {
@@ -319,32 +324,28 @@ function ali {
 # Build
 #
 function build-deps {
-    $nvim = "$HOME/neovim/"
-    if (Test-Path $nvim/cmake.deps) {
-        cmake -S $nvim/cmake.deps -B $nvim/.deps
+    if (Test-Path $NVIM/cmake.deps) {
+        cmake -S $NVIM/cmake.deps -B $NVIM/.deps
     } else {
-        cmake -S $nvim/third-party -B $nvim/.deps
+        cmake -S $NVIM/third-party -B $NVIM/.deps
     }
-    cmake --build $nvim/.deps --config Release
+    cmake --build $NVIM/.deps --config Release
 }
 
 function build {
-    $nvim = "$HOME/neovim/"
-    if (-Not (Test-Path $nvim/build)) {
-        cmake -S $nvim -B $nvim/build
+    if (-Not (Test-Path $NVIM/build)) {
+        cmake -S $NVIM -B $NVIM/build
     }
-    cmake --build $nvim/build --config Release
+    cmake --build $NVIM/build --config Release
 }
 
 function build-clean {
-    $nvim = "$HOME/neovim/"
-    rm -recurse -force $nvim/build
-    rm -recurse -force $nvim/.deps
+    rm -recurse -force $NVIM/build
+    rm -recurse -force $NVIM/.deps
 }
 
 function build-install {
-    $nvim = "$HOME/neovim/"
-    cmake --install $nvim/build --prefix $nvim/bin
+    cmake --install $NVIM/build --prefix $NVIM/bin
 }
 
 function build-all {
@@ -353,13 +354,11 @@ function build-all {
 }
 
 function bi {
-    $nvim = "$HOME/neovim/"
     build-install
-    . $nvim/bin/bin/nvim $args
+    . $NVIM/bin/bin/nvim $args
 }
 
 function si {
-    $nvim = "$HOME/neovim/"
     build-install
-    . $nvim/bin/bin/nvim --clean -S $HOME/minimal.vim
+    . $NVIM/bin/bin/nvim --clean -S $PROG/minimal.vim
 }
