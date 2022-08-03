@@ -300,6 +300,10 @@ function .. {
     cd ..
 }
 
+function dnp {
+    cd $HOME/AppData/Local/nvim
+}
+
 #
 # Config
 #
