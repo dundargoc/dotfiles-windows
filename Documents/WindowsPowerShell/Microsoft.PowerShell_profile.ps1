@@ -175,6 +175,10 @@ function gpf {
     git push --force-with-lease --quiet
 }
 
+function gps {
+    git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+}
+
 function gr {
     git remote
 }
