@@ -4,6 +4,7 @@ function remove-alias {
         del alias:$args -force
     }
 }
+remove-alias cd
 remove-alias gc
 remove-alias gcb
 remove-alias gl
@@ -29,6 +30,14 @@ $NVIM="$PROG/neovim"
 # Aliases and Functions
 #
 #
+
+function cd {
+    if($args) {
+        set-location "$args"
+    } else{
+        set-location "$home"
+    }
+}
 
 function vi {
     nvim $args
