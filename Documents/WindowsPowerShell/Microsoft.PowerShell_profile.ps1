@@ -28,10 +28,6 @@ function vi {
     nvim $args
 }
 
-function ali {
-    nvim $profile
-}
-
 # git
 function ga {
     if($args) {
@@ -304,6 +300,10 @@ function .. {
 #
 function vimrc{
     nvim $HOME/AppData/Local/nvim/init.vim
+}
+
+function ali {
+    nvim $profile
 }
 
 #
