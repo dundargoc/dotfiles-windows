@@ -216,6 +216,10 @@ function gre {
     #git rebase --continue || git revert --continue
 #}
 
+function grem {
+    git rebase $(gh-default-branch) $args
+}
+
 function gremmaster {
     grem -X ours
 }
