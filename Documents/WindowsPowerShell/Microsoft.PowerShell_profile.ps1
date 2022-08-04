@@ -356,6 +356,13 @@ function build {
     cp $NVIM/build/compile_commands.json $NVIM
 }
 
+function build-msvc {
+    if (-Not (Test-Path $NVIM/build)) {
+        cmake -S $NVIM -B $NVIM/build
+    }
+    cmake --build $NVIM/build --config Release
+}
+
 function build-clean {
     if (Test-Path $NVIM/build) {
         rm -recurse -force $NVIM/build
