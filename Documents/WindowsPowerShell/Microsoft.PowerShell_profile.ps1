@@ -236,6 +236,13 @@ function gri {
     }
 }
 
+function grim {
+    $default=$(gh-default-branch)
+    $current=$(git branch --show-current)
+    $ancestor=$(git merge-base $default $current)
+    git rebase -i $ancestor
+}
+
 function groot {
     git rebase --root -i
 }
