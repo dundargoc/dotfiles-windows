@@ -23,10 +23,15 @@ set-psreadlinekeyhandler -key ctrl+w -function backwarddeleteword
 # Faster scoop search
 Invoke-Expression (&scoop-search --hook)
 
-# Useful variables
+# Helper function and useful variables
 
 $PROG="$HOME/programs"
 $NVIM="$PROG/neovim"
+
+function gh-default-branch {
+    $branch=(git rev-parse --abbrev-ref origin/HEAD).replace("origin/","")
+    echo $branch
+}
 
 #
 #
@@ -102,6 +107,14 @@ function check {
 
 function gd {
     git diff
+}
+
+function gdm {
+    $default=$(gh-default-branch)
+    $current=$(git branch --show-current)
+    $ancestor=$(git merge-base $default $current)
+
+    git diff "$ancestor...$current"
 }
 
 function gdw {
@@ -188,7 +201,7 @@ function gpf {
 }
 
 function gps {
-    git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+    git push --set-upstream origin $(gh-default-branch)
 }
 
 function gr {
