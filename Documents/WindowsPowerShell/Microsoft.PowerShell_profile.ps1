@@ -70,11 +70,11 @@ function gac {
 }
 
 function gaf {
-    git add -f
+    git add -f $args
 }
 
 function gap {
-    git add -p
+    git add -p $args
 }
 
 function gb {
