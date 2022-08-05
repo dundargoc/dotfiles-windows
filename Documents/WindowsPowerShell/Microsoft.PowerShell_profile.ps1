@@ -133,6 +133,10 @@ function gcd {
     cd $(git rev-parse --show-toplevel)
 }
 
+function gcl {
+    gh repo clone $args
+}
+
 function gclc {
     git clean -fd :/
 }
