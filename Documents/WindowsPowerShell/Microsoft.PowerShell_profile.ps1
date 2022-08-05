@@ -398,6 +398,15 @@ function build {
     cp $NVIM/build/compile_commands.json $NVIM
 }
 
+function cbuild {
+    $path=$(git rev-parse --show-toplevel)
+    $build_path="$path/build"
+
+    cmake -S $path -B $build_path -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+    cmake --build $build_path
+    cp $build_path/compile_commands.json $path
+}
+
 function build-clean {
     if (Test-Path $NVIM/build) {
         rm -recurse -force $NVIM/build
