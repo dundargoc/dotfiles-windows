@@ -383,6 +383,10 @@ function fali {
     nvim $HOME/dotfiles/.config/fish/conf.d/alias.fish
 }
 
+function prc {
+    nvim $HOME/AppData/Local/nvim/plugin/packer.lua
+}
+
 #
 # Build
 #
