@@ -109,7 +109,7 @@ function check {
 }
 
 function gd {
-    git diff
+    git diff $args
 }
 
 function gdm {
@@ -121,15 +121,15 @@ function gdm {
 }
 
 function gdw {
-    git diff --word-diff
+    git diff --word-diff $args
 }
 
 function gdc {
-    git diff --cached
+    git diff --cached $args
 }
 
 function gdcw {
-    git diff --cached --word-diff
+    git diff --cached --word-diff $args
 }
 
 function gcd {
