@@ -134,7 +134,11 @@ function gcd {
 }
 
 function gcl {
-    gh repo clone $args
+    gh repo clone $args[0] -- --recursive $args[1..($args.length)]
+}
+
+function gcl1 {
+    gcl $args --depth=1
 }
 
 function gclc {
