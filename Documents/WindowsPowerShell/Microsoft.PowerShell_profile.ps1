@@ -357,6 +357,10 @@ function dnp {
     cd $HOME/AppData/Local/nvim
 }
 
+function dff {
+    cd $HOME/dotfiles/.config/fish/functions
+}
+
 #
 # Config
 #
@@ -366,6 +370,10 @@ function vimrc{
 
 function ali {
     nvim $profile
+}
+
+function fali {
+    nvim $HOME/dotfiles/.config/fish/conf.d/alias.fish
 }
 
 #
