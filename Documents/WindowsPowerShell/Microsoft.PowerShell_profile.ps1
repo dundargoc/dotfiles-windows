@@ -23,6 +23,9 @@ set-psreadlinekeyhandler -key ctrl+w -function backwarddeleteword
 # Faster scoop search
 Invoke-Expression (&scoop-search --hook)
 
+# Add color to ls
+import-module pscolor
+
 # Helper function and useful variables
 
 $PROG="$HOME/programs"
