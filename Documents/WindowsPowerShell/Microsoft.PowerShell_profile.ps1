@@ -212,7 +212,7 @@ function gpf {
 }
 
 function gps {
-    git push --set-upstream origin $(gh-default-branch)
+    git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 }
 
 function gr {
