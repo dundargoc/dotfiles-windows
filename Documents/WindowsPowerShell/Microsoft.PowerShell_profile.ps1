@@ -405,6 +405,12 @@ function build {
     cp $NVIM/build/compile_commands.json $NVIM
 }
 
+function build-release {
+    cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release
+    cmake --build $NVIM/build
+    cp $NVIM/build/compile_commands.json $NVIM
+}
+
 function cbuild {
     $path=$(git rev-parse --show-toplevel)
     $build_path="$path/build"
