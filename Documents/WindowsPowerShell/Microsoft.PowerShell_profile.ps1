@@ -344,6 +344,10 @@ function cdp {
     cd $PROG
 }
 
+function cdni {
+    cd $NVIM/.github/workflows
+}
+
 function cdn {
     cd $NVIM
 }
