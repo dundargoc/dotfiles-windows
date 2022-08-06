@@ -304,10 +304,9 @@ function bisect {
     git bisect start
 }
 
-
-#function create {
-    #gps; gh pr create --fill --draft
-#}
+function create {
+    gps; gh pr create --fill --draft
+}
 
 #function fork {
     #gh repo fork --clone=true
