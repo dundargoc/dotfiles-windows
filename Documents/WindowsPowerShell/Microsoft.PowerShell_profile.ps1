@@ -239,7 +239,7 @@ function gres {
     if($args) {
         git restore $args
     } else {
-        git restore .
+        git restore :/
     }
 }
 
