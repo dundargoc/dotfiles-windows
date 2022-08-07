@@ -339,6 +339,10 @@ function s {
 # Fast travel
 #
 
+function cdd {
+    cd $NVIM/Downloads
+}
+
 function cdp {
     cd $PROG
 }
