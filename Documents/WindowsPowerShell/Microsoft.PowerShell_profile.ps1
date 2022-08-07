@@ -351,6 +351,10 @@ function cdni {
     cd $NVIM/.github/workflows
 }
 
+function cdnci {
+    cd $NVIM/ci
+}
+
 function cdn {
     cd $NVIM
 }
