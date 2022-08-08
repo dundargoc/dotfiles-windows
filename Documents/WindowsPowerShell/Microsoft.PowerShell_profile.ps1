@@ -411,7 +411,7 @@ function build-deps {
 }
 
 function build {
-    cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release
+    cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     cmake --build $NVIM/build
     cp $NVIM/build/compile_commands.json $NVIM
 }
