@@ -403,7 +403,7 @@ function prc {
 #
 function build-deps {
     if (Test-Path $NVIM/cmake.deps) {
-        cmake -S $NVIM/cmake.deps -B $NVIM/.deps
+        cmake -S $NVIM/cmake.deps -B $NVIM/.deps -D CMAKE_BUILD_TYPE=Debug
     } else {
         cmake -S $NVIM/third-party -B $NVIM/.deps
     }
