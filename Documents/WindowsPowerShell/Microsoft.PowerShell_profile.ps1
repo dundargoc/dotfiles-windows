@@ -375,6 +375,10 @@ function dn {
     cd $HOME/AppData/Local/nvim
 }
 
+function dnp {
+    cd $HOME/AppData/Local/nvim/plugin
+}
+
 function dff {
     cd $HOME/dotfiles/.config/fish/functions
 }
