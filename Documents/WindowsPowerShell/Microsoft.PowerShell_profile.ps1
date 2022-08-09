@@ -196,7 +196,7 @@ function glp {
 }
 
 function glpd {
-    git log -p --word-diff
+    git log -p --word-diff $args
 }
 
 function gls {
