@@ -199,6 +199,18 @@ function glpd {
     git log -p --word-diff
 }
 
+function gls {
+    $default=$(gh-default-branch)
+    $current=$(git branch --show-current)
+    $ancestor=$(git merge-base $default $current)
+
+    if($default -eq $current) {
+        git log --stat --oneline
+    } else {
+        git log --stat --oneline "$ancestor...$current"
+    }
+}
+
 function gp {
     git push --quiet
 }
