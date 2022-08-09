@@ -371,7 +371,7 @@ function .. {
     cd ..
 }
 
-function dnp {
+function dn {
     cd $HOME/AppData/Local/nvim
 }
 
