@@ -283,6 +283,9 @@ function ameno {
     git commit --amend --no-verify --allow-empty --no-edit; gpf
 }
 
+function abort {
+    git rebase --abort
+}
 
 function good {
     git bisect good
