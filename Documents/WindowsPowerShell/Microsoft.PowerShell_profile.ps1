@@ -117,7 +117,7 @@ function gdm {
     $current=$(git branch --show-current)
     $ancestor=$(git merge-base $default $current)
 
-    git diff "$ancestor...$current"
+    git diff "$ancestor...$current" $args
 }
 
 function gdw {
