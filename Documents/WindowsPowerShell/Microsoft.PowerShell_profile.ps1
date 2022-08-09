@@ -192,7 +192,7 @@ function gla {
 }
 
 function glp {
-    git log -p
+    git log -p $args
 }
 
 function glpd {
