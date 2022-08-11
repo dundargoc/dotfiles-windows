@@ -422,7 +422,7 @@ function prc {
 #
 function build-deps {
     if (Test-Path $NVIM/cmake.deps) {
-        cmake -S $NVIM/cmake.deps -B $NVIM/.deps -D CMAKE_BUILD_TYPE=Debug
+        cmake -S $NVIM/cmake.deps -B $NVIM/.deps
     } else {
         cmake -S $NVIM/third-party -B $NVIM/.deps
     }
@@ -430,7 +430,7 @@ function build-deps {
 }
 
 function build {
-    cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+    cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -D CMAKE_BUILD_TYPE=RelWithDebInfo
     cmake --build $NVIM/build
     cp $NVIM/build/compile_commands.json $NVIM
 }
