@@ -426,7 +426,7 @@ function build-deps {
     } else {
         cmake -S $NVIM/third-party -B $NVIM/.deps
     }
-    cmake --build $NVIM/.deps
+    cmake --build $NVIM/.deps --config RelWithDebInfo
 }
 
 function build {
