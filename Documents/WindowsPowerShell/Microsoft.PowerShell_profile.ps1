@@ -58,6 +58,10 @@ function ag {
     rg --ignore-case --hidden --glob '!.git' $args
 }
 
+function Private:rg {
+    rg --hidden --glob '!.git' $args
+}
+
 # git
 function ga {
     if($args) {
