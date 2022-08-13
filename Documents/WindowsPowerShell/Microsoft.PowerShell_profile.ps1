@@ -239,9 +239,9 @@ function gre {
     git rebase
 }
 
-#function grec {
-    #git rebase --continue || git revert --continue
-#}
+function grec {
+    git rebase --continue
+}
 
 function grem {
     git rebase $(gh-default-branch) $args
