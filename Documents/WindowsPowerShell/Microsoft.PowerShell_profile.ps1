@@ -331,9 +331,9 @@ function create {
     gps; gh pr create --fill --draft
 }
 
-#function fork {
-    #gh repo fork --clone=true
-#}
+function fork {
+    gh repo fork --clone=true $args
+}
 
 
 function stash {
