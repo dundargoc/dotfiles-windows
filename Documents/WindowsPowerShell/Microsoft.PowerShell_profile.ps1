@@ -157,11 +157,11 @@ function gcn {
 }
 
 function gco {
-    git checkout
+    git checkout $args
 }
 
 function gcp {
-    git cherry-pick
+    git cherry-pick $args
 }
 
 function gf {
