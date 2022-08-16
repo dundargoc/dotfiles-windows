@@ -124,6 +124,10 @@ function gdm {
     git diff "$ancestor...$current" $args
 }
 
+function gdmw {
+    gdm --word-diff $args
+}
+
 function gdw {
     git diff --word-diff $args
 }
