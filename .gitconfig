@@ -1,7 +1,7 @@
 [core]
 	editor = nvim
 [user]
-	email = gocundar@gmail.com
+	email = gocdundar@gmail.com
 	name = dundargoc
 [alias]
 	bisect-all = !git bisect start && git bisect bad && git bisect good $(git rev-list --max-parents=0 --first-parent HEAD)
