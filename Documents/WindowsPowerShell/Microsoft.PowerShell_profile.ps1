@@ -434,11 +434,11 @@ function build-deps {
     } else {
         cmake -S $NVIM/third-party -B $NVIM/.deps
     }
-    cmake --build $NVIM/.deps --config RelWithDebInfo
+    cmake --build $NVIM/.deps
 }
 
 function build {
-    cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -D CMAKE_BUILD_TYPE=RelWithDebInfo
+    cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
     cmake --build $NVIM/build
     cp $NVIM/build/compile_commands.json $NVIM
 }
