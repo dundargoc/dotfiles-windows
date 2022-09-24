@@ -406,6 +406,10 @@ function dff {
     cd $HOME/dotfiles/.config/fish/functions
 }
 
+function dm {
+    cd $HOME/.misc
+}
+
 #
 # Config
 #
