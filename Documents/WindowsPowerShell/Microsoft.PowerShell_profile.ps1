@@ -4,12 +4,14 @@ function remove-alias {
         del alias:$args -force
     }
 }
+
 remove-alias cd
 remove-alias gc
 remove-alias gcb
 remove-alias gl
 remove-alias gp
 remove-alias gps
+remove-alias rmdir
 remove-alias si
 
 # PSReadline
@@ -34,6 +36,13 @@ $NVIM="$PROG/neovim"
 function gh-default-branch {
     $branch=(git rev-parse --abbrev-ref origin/HEAD).replace("origin/","")
     echo $branch
+}
+
+# Remove folder if it exists
+function rmdir {
+    if (Test-Path "$args") {
+        rm -recurse -force "$args"
+    }
 }
 
 #
@@ -470,12 +479,8 @@ function cbuild {
 }
 
 function build-clean {
-    if (Test-Path $NVIM/build) {
-        rm -recurse -force $NVIM/build
-    }
-    if (Test-Path $NVIM/.deps) {
-        rm -recurse -force $NVIM/.deps
-    }
+    rmdir "$NVIM/build"
+    rmdir "$NVIM/.deps"
 }
 
 function build-install {
