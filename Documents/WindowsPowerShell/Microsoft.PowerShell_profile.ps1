@@ -442,12 +442,19 @@ function build-deps {
     } else {
         cmake -S $NVIM/third-party -B $NVIM/.deps
     }
-    cmake --build $NVIM/.deps
+    cmake --build $NVIM/.deps $args
+}
+
+function build-release {
+    build-clean
+    build-deps "--config release"
+    build "-DCMAKE_BUILD_TYPE=Release"
+    build-install
 }
 
 function build {
     if (!(Test-Path $NVIM/build)) {
-        cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        cmake -S $NVIM -B $NVIM/build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON $args
     }
     cmake --build $NVIM/build
     cp $NVIM/build/compile_commands.json $NVIM
