@@ -481,6 +481,7 @@ function cbuild {
 function build-clean {
     rmdir "$NVIM/build"
     rmdir "$NVIM/.deps"
+    rmdir "$NVIM/bin"
 }
 
 function build-install {
