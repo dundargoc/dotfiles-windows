@@ -454,11 +454,8 @@ function build-deps {
     cmake --build $NVIM/.deps $args
 }
 
-function build-release {
-    build-clean
+function build-deps-release {
     build-deps "--config release"
-    build "-DCMAKE_BUILD_TYPE=Release"
-    build-install
 }
 
 function build {
@@ -467,6 +464,22 @@ function build {
     }
     cmake --build $NVIM/build
     cp $NVIM/build/compile_commands.json $NVIM
+}
+
+function build-release {
+    build "-DCMAKE_BUILD_TYPE=Release"
+}
+
+function build-all {
+    build-deps
+    build
+}
+
+function build-all-release {
+    build-clean
+    build-deps-release
+    build-release
+    build-install
 }
 
 function cbuild {
@@ -486,11 +499,6 @@ function build-clean {
 
 function build-install {
     cmake --install $NVIM/build --prefix $NVIM/bin
-}
-
-function build-all {
-    build-deps
-    build
 }
 
 function bi {
