@@ -471,8 +471,10 @@ function build-release {
 }
 
 function build-all {
+    build-clean
     build-deps
     build
+    build-install
 }
 
 function build-all-release {
