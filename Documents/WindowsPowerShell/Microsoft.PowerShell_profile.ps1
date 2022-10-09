@@ -454,6 +454,24 @@ function build-deps {
     cmake --build $NVIM/.deps $args
 }
 
+function build-deps-ninja {
+    if (Test-Path $NVIM/cmake.deps) {
+        cmake -S $NVIM/cmake.deps -B $NVIM/.deps -G Ninja
+    } else {
+        cmake -S $NVIM/third-party -B $NVIM/.deps -G Ninja
+    }
+    cmake --build $NVIM/.deps $args
+}
+
+function build-deps-release-ninja {
+    if (Test-Path $NVIM/cmake.deps) {
+        cmake -S $NVIM/cmake.deps -B $NVIM/.deps -G Ninja -DCMAKE_BUILD_TYPE=Release
+    } else {
+        cmake -S $NVIM/third-party -B $NVIM/.deps -G Ninja -DCMAKE_BUILD_TYPE=Release
+    }
+    cmake --build $NVIM/.deps $args
+}
+
 function build-deps-release {
     build-deps "--config release"
 }
@@ -480,6 +498,20 @@ function build-all {
 function build-all-release {
     build-clean
     build-deps-release
+    build-release
+    build-install
+}
+
+function build-all-ninja {
+    build-clean
+    build-deps-ninja
+    build
+    build-install
+}
+
+function build-all-release-ninja {
+    build-clean
+    build-deps-release-ninja
     build-release
     build-install
 }
