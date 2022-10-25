@@ -48,7 +48,7 @@ cabbrev w up
 
 " Git fugitive
 cabbrev gb G blame
-cabbrev gs G status
+cabbrev gs Gitsigns
 
 " Packer
 cabbrev ps PackerSync
