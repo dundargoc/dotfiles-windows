@@ -102,3 +102,5 @@ set diffopt=filler,context:1
 
 " Enable persistent undo
 set undofile
+
+lua require('gitsigns').setup()

@@ -12,6 +12,7 @@ local plugins = {
 
     -- git plugins
     'tpope/vim-fugitive',
+    'lewis6991/gitsigns.nvim',
 
     -- tmux
     'edkolev/tmuxline.vim',
