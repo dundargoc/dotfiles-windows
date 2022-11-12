@@ -70,6 +70,21 @@ let g:loaded_node_provider = 0
 let g:loaded_python3_provider = 0
 
 " ------------------------------------
+" Clipboard
+
+nnoremap <leader>y  "+y
+nnoremap <leader>Y  "+y$
+nnoremap <leader>p  "+p
+nnoremap <leader>P  "+P
+nnoremap <leader>gp "+gp
+nnoremap <leader>gP "+gP
+xnoremap <leader>y  "+y
+xnoremap <leader>p  "+p
+xnoremap <leader>P  "+P
+xnoremap <leader>gp "+gp
+xnoremap <leader>gP "+gP
+
+" ------------------------------------
 " Options
 
 set autoindent
