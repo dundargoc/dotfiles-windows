@@ -72,8 +72,6 @@ let g:loaded_python3_provider = 0
 " ------------------------------------
 " Options
 
-set clipboard+=unnamedplus
-
 set autoindent
 set shiftwidth=4
 set softtabstop=-1
