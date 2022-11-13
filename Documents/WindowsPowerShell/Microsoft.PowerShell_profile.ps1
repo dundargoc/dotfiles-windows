@@ -452,7 +452,7 @@ function build-deps {
     } else {
         cmake -S $NVIM/third-party -B $NVIM/.deps -G Ninja $args
     }
-    cmake --build $NVIM/.deps $args
+    cmake --build $NVIM/.deps
 }
 
 function build-deps-release {
