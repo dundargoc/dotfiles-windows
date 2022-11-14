@@ -307,6 +307,10 @@ function gshw {
     git show --word-diff $args
 }
 
+function ame {
+    ga
+    git commit --amend --no-verify --allow-empty --no-edit
+}
 
 function amend {
     git commit --amend --no-verify --allow-empty
