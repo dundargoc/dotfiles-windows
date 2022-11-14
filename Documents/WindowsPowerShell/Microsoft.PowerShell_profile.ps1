@@ -249,7 +249,11 @@ function gr {
 }
 
 function gre {
-    git rebase
+    if($args) {
+        git rebase "$args"
+    } else{
+        git rebase $(gh-default-branch)
+    }
 }
 
 function grec {
