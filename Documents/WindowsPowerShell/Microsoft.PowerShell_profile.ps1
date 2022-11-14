@@ -276,6 +276,14 @@ function gres {
     }
 }
 
+function gress {
+    if($args) {
+        git restore --staged $args
+    } else {
+        git restore --staged :/
+    }
+}
+
 function gri {
     if($args) {
         git rebase -i HEAD~$args
