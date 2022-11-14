@@ -261,11 +261,11 @@ function grec {
 }
 
 function grem {
-    git rebase $(gh-default-branch) $args
-}
-
-function gremmaster {
-    grem -X ours
+    if($args) {
+        git rebase -X ours "$args"
+    } else{
+        git rebase -X ours $(gh-default-branch)
+    }
 }
 
 function gres {
