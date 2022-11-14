@@ -195,7 +195,7 @@ function gis {
     if($args) {
         $branch = $args
     } else{
-        $branch = "master"
+        $branch = $(gh-default-branch)
     }
     git switch $branch
 }
