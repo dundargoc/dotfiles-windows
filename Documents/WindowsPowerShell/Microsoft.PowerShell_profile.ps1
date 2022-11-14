@@ -529,3 +529,7 @@ function si {
     build-install
     . $NVIM/bin/bin/nvim --clean -S $PROG/minimal.vim
 }
+
+function cm {
+    vi CMakeLists.txt
+}
