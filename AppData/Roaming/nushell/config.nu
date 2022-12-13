@@ -531,3 +531,4 @@ let-env config = {
   ]
 }
 
+alias ali = config nu
