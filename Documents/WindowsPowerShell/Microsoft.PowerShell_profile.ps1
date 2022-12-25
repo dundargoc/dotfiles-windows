@@ -443,7 +443,7 @@ function db {
 # Config
 #
 function vimrc{
-    nvim $HOME/AppData/Local/nvim/init.vim
+    nvim $HOME/AppData/Local/nvim/init.lua
 }
 
 function ali {
