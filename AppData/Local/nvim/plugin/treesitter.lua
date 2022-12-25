@@ -1,7 +1,6 @@
-require('nvim-treesitter.configs').setup {
-    ensure_installed = 'all',
-    ignore_install = { 'phpdoc', 'php', 'tlaplus', 'llvm', 'commonlisp' },
+require('nvim-treesitter.configs').setup({
+    auto_install = true,
     highlight = {
         enable = true,
     },
-}
+})

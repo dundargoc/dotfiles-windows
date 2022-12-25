@@ -1,6 +1,7 @@
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').sumneko_lua.setup({
     on_attach = require('lsp').on_attach,
-    root_dir = require('lspconfig').util.root_pattern { '.git', 'init.vim' },
+    root_dir = require('lspconfig').util.root_pattern({ '.git', 'init.vim' }),
+    cmd_env = { HOME = '' },
     settings = {
         Lua = {
             runtime = {
@@ -23,16 +24,16 @@ require('lspconfig').sumneko_lua.setup {
                     'pending',
                     'copcall',
                 },
-                disable = { 'lowercase-global' },
+                disable = { 'lowercase-global', 'assign-type-mismatch', 'missing-parameter' },
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file('', true),
                 maxPreload = 1000,
-                preloadFileSize = 350,
+                preloadFileSize = 500,
                 checkThirdParty = false,
             },
             completion = { callSnippet = 'Replace', showWord = 'Disable' },
         },
     },
-}
+})
