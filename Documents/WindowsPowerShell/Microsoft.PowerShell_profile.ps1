@@ -521,6 +521,8 @@ function build-install {
 }
 
 function bi {
+    build-deps
+    build
     build-install
     . $NVIM/bin/bin/nvim $args
 }
