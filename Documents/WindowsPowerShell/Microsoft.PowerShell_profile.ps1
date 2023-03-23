@@ -102,6 +102,10 @@ function gbd {
     git branch --delete --force $args
 }
 
+function gbdr {
+    git push origin --delete $args
+}
+
 function gbm {
     git branch --move $args
 }
