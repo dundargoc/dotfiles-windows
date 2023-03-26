@@ -1,6 +1,6 @@
 require('lspconfig').lua_ls.setup({
     on_attach = require('lsp').on_attach,
-    root_dir = require('lspconfig').util.root_pattern({ '.git', 'init.vim' }),
+    root_dir = require('lspconfig').util.root_pattern({ '.git', 'init.lua' }),
     cmd_env = { HOME = '' },
     settings = {
         Lua = {
