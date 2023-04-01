@@ -533,6 +533,12 @@ function si {
     . $NVIM/bin/bin/nvim --clean -S $PROG/minimal.vim
 }
 
+function build-test {
+    build-clean
+    build-deps-release
+    build-release
+}
+
 function cm {
     vi CMakeLists.txt
 }
