@@ -463,43 +463,29 @@ function prc {
 # Build
 #
 
-function build-deps {
-    if (Test-Path $NVIM/cmake.deps) {
-        cmake -S $NVIM/cmake.deps -B $NVIM/.deps -G Ninja $args
-    } else {
-        cmake -S $NVIM/third-party -B $NVIM/.deps -G Ninja $args
-    }
-    cmake --build $NVIM/.deps
-}
-
-function build-deps-release {
-    build-deps "-DCMAKE_BUILD_TYPE=Release"
-}
-
 function build {
-    if (!(Test-Path $NVIM/build)) {
-        cmake -S $NVIM -B $NVIM/build -G Ninja $args
+    if (!(Test-Path $NVIM/cmake.deps/CMakeCache.txt)) {
+        cmake -S $NVIM/cmake.deps -B $NVIM/.deps -G "Ninja Multi-Config"
     }
-    cmake --build $NVIM/build
+    if($args) {
+        cmake --build $NVIM/.deps --config $args
+    } else {
+        cmake --build $NVIM/.deps
+    }
+
+    if (!(Test-Path $NVIM/build/CMakeCache.txt)) {
+        cmake -S $NVIM -B $NVIM/build -G "Ninja Multi-Config"
+    }
+    if($args) {
+        cmake --build $NVIM/build --config $args
+    } else{
+        cmake --build $NVIM/build
+    }
     cp $NVIM/build/compile_commands.json $NVIM
 }
 
 function build-release {
-    build "-DCMAKE_BUILD_TYPE=Release"
-}
-
-function build-all {
-    build-clean
-    build-deps
-    build
-    build-install
-}
-
-function build-all-release {
-    build-clean
-    build-deps-release
-    build-release
-    build-install
+    build "Release"
 }
 
 function cbuild {
@@ -522,7 +508,6 @@ function build-install {
 }
 
 function bi {
-    build-deps
     build
     build-install
     . $NVIM/bin/bin/nvim $args
@@ -531,12 +516,6 @@ function bi {
 function si {
     build-install
     . $NVIM/bin/bin/nvim --clean -S $PROG/minimal.vim
-}
-
-function build-test {
-    build-clean
-    build-deps-release
-    build-release
 }
 
 function cm {
