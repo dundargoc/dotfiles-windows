@@ -17,7 +17,11 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.g.mapleader = ' '
 
 require('lazy').setup({
-    'dundargoc/gh.nvim',
+    {
+        'williamboman/mason.nvim',
+        build = ':MasonUpdate',
+        config = true,
+    },
     'lewis6991/gitsigns.nvim',
     'tpope/vim-fugitive',
     'edkolev/tmuxline.vim',
