@@ -412,6 +412,10 @@ function cdnn {
     cd $NVIM/src/nvim
 }
 
+function cdnt {
+    cd $NVIM/test
+}
+
 function cddep {
     cd $NVIM/cmake.deps/cmake
 }
