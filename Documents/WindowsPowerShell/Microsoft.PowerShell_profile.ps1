@@ -469,27 +469,19 @@ function prc {
 
 function build {
     if (!(Test-Path $NVIM/cmake.deps/CMakeCache.txt)) {
-        cmake -S $NVIM/cmake.deps -B $NVIM/.deps -G "Ninja Multi-Config"
+        cmake -S $NVIM/cmake.deps -B $NVIM/.deps -G Ninja $args
     }
-    if($args) {
-        cmake --build $NVIM/.deps --config $args
-    } else {
-        cmake --build $NVIM/.deps
-    }
+    cmake --build $NVIM/.deps
 
     if (!(Test-Path $NVIM/build/CMakeCache.txt)) {
-        cmake -S $NVIM -B $NVIM/build -G "Ninja Multi-Config"
+        cmake -S $NVIM -B $NVIM/build -G Ninja $args
     }
-    if($args) {
-        cmake --build $NVIM/build --config $args
-    } else{
-        cmake --build $NVIM/build
-    }
+    cmake --build $NVIM/build
     cp $NVIM/build/compile_commands.json $NVIM
 }
 
 function build-release {
-    build "Release"
+    build "-D CMAKE_BUILD_TYPE=RelWithDebInfo"
 }
 
 function cbuild {
