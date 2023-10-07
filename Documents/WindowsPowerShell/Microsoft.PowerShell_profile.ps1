@@ -53,6 +53,10 @@ function ls {
     eza $args
 }
 
+function la {
+    ls -A $args
+}
+
 function cd {
     if($args) {
         set-location "$args"
