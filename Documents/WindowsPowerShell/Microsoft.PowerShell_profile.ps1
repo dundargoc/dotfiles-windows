@@ -13,6 +13,7 @@ remove-alias gp
 remove-alias gps
 remove-alias rmdir
 remove-alias si
+remove-alias ls
 
 # PSReadline
 set-psreadlineoption -editmode vi
@@ -47,6 +48,10 @@ function rmdir {
 # Aliases and Functions
 #
 #
+
+function ls {
+    eza $args
+}
 
 function cd {
     if($args) {
