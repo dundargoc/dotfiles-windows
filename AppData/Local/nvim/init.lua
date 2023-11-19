@@ -1,5 +1,3 @@
--- Install plugin manager
-
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -18,12 +16,23 @@ vim.g.mapleader = ' '
 
 require('lazy').setup({
     {
+        'nvim-telescope/telescope.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+    },
+    {
         'williamboman/mason.nvim',
         build = ':MasonUpdate',
         config = true,
     },
+    {
+        'williamboman/mason-lspconfig.nvim',
+        opts = {
+            ensure_installed = {
+                "bashls", "clangd", "jsonls", "lua_ls", "pyright", "rust_analyzer", "vimls", "yamlls"
+            },
+        },
+    },
     'lewis6991/gitsigns.nvim',
-    'tpope/vim-fugitive',
     'edkolev/tmuxline.vim',
     'christoomey/vim-tmux-navigator',
     {
@@ -42,19 +51,19 @@ require('lazy').setup({
         'powerman/vim-plugin-AnsiEsc',
         cmd = 'AnsiEsc',
     },
-    'tpope/vim-commentary',
     'tpope/vim-surround',
+    'tpope/vim-fugitive',
+    'tpope/vim-rhubarb',
     'farmergreg/vim-lastplace',
+
+    'echasnovski/mini.nvim',
 
     -- Themes
     {
         'dracula/vim',
         name = 'dracula',
     },
-    'owozsh/amora',
-    'tomasr/molokai',
     'sjl/badwolf',
-    'TroyFletcher/vim-colors-synthwave',
     'Badacadabra/vim-archery',
     'mhartington/oceanic-next',
     'bluz71/vim-moonfly-colors',
@@ -62,7 +71,7 @@ require('lazy').setup({
     'morhetz/gruvbox',
     'navarasu/onedark.nvim',
 }, {
-    lockfile = vim.fn.stdpath('state') .. 'lazy/lazy-lock.json',
+    lockfile = vim.fn.stdpath('state') .. '/lazy/lazy-lock.json',
 })
 
 -- Helper functions
@@ -78,20 +87,11 @@ endfunction
 
 -- Themes
 
--- vim.cmd.colorscheme('molokai')
--- highlight Folded ctermfg=204
-
--- vim.cmd.colorscheme('synthwave')
--- highlight Folded ctermfg=204
--- highlight Folded ctermbg=000
-
 -- vim.cmd.colorscheme('badwolf')
 -- vim.cmd.colorscheme('moonfly')
--- vim.cmd.colorscheme('amora')
 -- vim.cmd.colorscheme('archery')
 -- vim.cmd.colorscheme('OceanicNext')
 -- vim.cmd.colorscheme('dracula')
--- vim.cmd.colorscheme('tokyonight')
 -- vim.cmd.colorscheme('gruvbox')
 
 vim.g.onedark_config = { style = 'deep' }
@@ -100,6 +100,7 @@ vim.cmd.colorscheme('onedark')
 -- Custom commands
 
 vim.keymap.set('n', '<c-z>', '<nop>')
+vim.keymap.set('n', '<leader>s', ':%s/\\s\\+$//e<enter>')
 
 -- Abbreviations
 
@@ -112,8 +113,16 @@ call Cabbrev('w', 'up')
 call Cabbrev('gb', 'G blame')
 call Cabbrev('gs', 'Gitsigns')
 
+" rhubarb
+call Cabbrev('go', '.GBrowse')
+
 " Plugin
 call Cabbrev('lazy', 'Lazy')
+call Cabbrev('up', 'Lazy update')
+
+call Cabbrev('man', 'Man')
+
+call Cabbrev('mason', 'Mason')
 ]])
 
 -- Other
@@ -134,7 +143,6 @@ vim.g.loaded_python3_provider = 0
 vim.o.shiftwidth = 4
 vim.o.softtabstop = -1
 
--- Make tabs spaces - required for neovim development
 vim.o.expandtab = true
 
 vim.o.ignorecase = true
@@ -144,7 +152,7 @@ vim.o.smartcase = true
 vim.o.termguicolors = true
 
 -- Set default font and font size for GUI.
-vim.o.guifont = 'Fira Code:h11'
+vim.o.guifont = 'Fira Code:h15'
 
 -- Enable persistent undo
 vim.o.undofile = true
