@@ -393,6 +393,12 @@ function s {
     git -C $repo_path pull --rebase --all
 }
 
+function upgrade {
+    git -C $HOME pull
+    scoop update *
+    winget upgrade --all
+}
+
 #
 # Fast travel
 #
