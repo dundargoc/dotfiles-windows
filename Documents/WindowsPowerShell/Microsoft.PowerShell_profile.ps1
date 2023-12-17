@@ -396,7 +396,6 @@ function s {
 function upgrade {
     git -C $HOME pull
     scoop update *
-    winget upgrade --all
 }
 
 #
