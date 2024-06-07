@@ -170,6 +170,10 @@ function gcl1 {
 
 function gclc {
     git clean -fd :/
+    # There seems to be a bug in `git clean` on windows where a second run is
+    # needed to really remove all untracked files. This show itself when trying
+    # to remove install artifacts from neovim.
+    git clean -fd :/
 }
 
 function gcn {
