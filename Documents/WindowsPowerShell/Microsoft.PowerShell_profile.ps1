@@ -394,7 +394,7 @@ function s {
     git -C $repo_path pull --rebase --all
 }
 
-function upgrade {
+function up {
     git -C $HOME pull
     scoop update *
 }
