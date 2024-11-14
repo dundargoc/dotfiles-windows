@@ -470,10 +470,6 @@ function ali {
     nvim $profile
 }
 
-function fali {
-    nvim $HOME/dotfiles/.config/fish/conf.d/alias.fish
-}
-
 function cnd {
     nvim $NVIM/src/nvim/CMakeLists.txt
 }
