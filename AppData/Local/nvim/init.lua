@@ -37,9 +37,7 @@ require('lazy').setup({
     'christoomey/vim-tmux-navigator',
     {
         'glacambre/firenvim',
-        build = function()
-            vim.fn['firenvim#install'](0)
-        end,
+        build = ":call firenvim#install(0)"
     },
     {
         'nvim-treesitter/nvim-treesitter',
