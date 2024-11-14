@@ -223,7 +223,7 @@ function glp {
     git log -p $args
 }
 
-function glpd {
+function glpw {
     git log -p --word-diff $args
 }
 
