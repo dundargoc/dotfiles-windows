@@ -482,6 +482,10 @@ function cnd {
     nvim $NVIM/src/nvim/CMakeLists.txt
 }
 
+function grc {
+    nvim $HOME/.gitconfig
+}
+
 #
 # Build
 #
