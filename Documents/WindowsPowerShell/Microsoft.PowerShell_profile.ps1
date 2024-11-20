@@ -435,6 +435,10 @@ function cddep {
     cd $NVIM/cmake.deps/cmake
 }
 
+function cdw {
+    cd $HOME/work
+}
+
 function .. {
     cd ..
 }
