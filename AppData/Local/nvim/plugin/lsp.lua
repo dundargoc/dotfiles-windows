@@ -3,15 +3,21 @@ local lspconfig = require('lspconfig')
 lspconfig.rust_analyzer.setup {
     settings = { ['rust-analyzer'] = { check = { command = 'clippy' } } },
 }
-lspconfig.vimls.setup {}
 lspconfig.clangd.setup {}
-lspconfig.bashls.setup {}
+lspconfig.bashls.setup {
+    settings = {
+        bashIde = {
+            shellcheckArguments = "-e SC2086"
+        }
+    }
+}
 lspconfig.jsonls.setup {}
 lspconfig.pyright.setup {}
 lspconfig.yamlls.setup {}
+lspconfig.ts_ls.setup {}
+lspconfig.zls.setup {}
 
 lspconfig.lua_ls.setup({
-    root_dir = require('lspconfig').util.root_pattern({ '.git', 'init.vim' }),
     cmd_env = { HOME = '' },
     settings = {
         Lua = {
@@ -19,11 +25,13 @@ lspconfig.lua_ls.setup({
                 version = 'LuaJIT',
             },
             diagnostics = {
-                disable = { 'lowercase-global', 'assign-type-mismatch', 'missing-parameter' },
+                disable = { 'undefined-global' },
             },
             workspace = {
                 library = {
-                    vim.env.VIMRUNTIME,
+                    -- TODO: might want to make this smarter by adding this for
+                    -- non-neovim repos.
+                    -- vim.env.VIMRUNTIME,
                     "${3rd}/busted/library",
                     "${3rd}/luv/library"
                 },
@@ -36,8 +44,6 @@ lspconfig.lua_ls.setup({
 
 -- Global mappings.
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
@@ -50,6 +56,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- Buffer local mappings.
         local opts = { buffer = ev.buf }
+        if vim.version.lt(vim.version(), '0.11') then
+            vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
+        end
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -58,7 +67,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         vim.keymap.set('n', '<space>x', function()
             vim.lsp.buf.format { async = true }
         end, opts)
